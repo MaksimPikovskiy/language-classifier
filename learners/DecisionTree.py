@@ -99,8 +99,7 @@ def create_tree(examples, attributes, parent_examples, depth):
         root = Node(attribute, False)
 
         # if an illegal depth was given or calculated, set it to one
-        if depth < 1:
-            depth = 1
+        depth = 1 if depth < 1 else depth
 
         for child in children:
             subtree = None

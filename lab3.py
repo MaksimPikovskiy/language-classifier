@@ -16,6 +16,7 @@ DEPTH = 7
 ENSEMBLE_SIZE = 5
 # ~~~~~~~~~~~~~~~~~~~~~
 
+
 def main():
     """
     Starts the application by reading the given arguments.
@@ -31,7 +32,7 @@ def main():
 
     if action_type == "train":
         # check if all required arguments for training are provided
-        if len(sys.argv) <= 4:
+        if len(sys.argv) < 5:
             print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(True, False)
 
@@ -59,7 +60,7 @@ def main():
 
     elif action_type == "predict":
         # check if all required arguments for predicting are provided
-        if len(sys.argv) <= 3:
+        if len(sys.argv) < 4:
             print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(False, True)
 

@@ -43,10 +43,10 @@ class WeightedInstance:
         :return: none
         """
         normalization_constant = self.initial_sum / self.sum
-        self.sum = 0
+        self.sum = 0                                        # reset sum
         for example in self.data:
-            example.weight *= normalization_constant
-            self.sum += example.weight
+            example.weight *= normalization_constant        # normalize every weight
+            self.sum += example.weight                      # update the sum to normalized weights
 
     def change_weight(self, i, new_weight):
         """
@@ -56,6 +56,6 @@ class WeightedInstance:
         :param new_weight: the new weight for the data at index i
         :return: none
         """
-        self.sum -= self.data[i].weight
-        self.data[i].weight = new_weight
-        self.sum += new_weight
+        self.sum -= self.data[i].weight     # remove old weight from sum
+        self.data[i].weight = new_weight    # update weight
+        self.sum += new_weight              # add new weight into sum
