@@ -52,7 +52,7 @@ class DecisionTree:
 
     def train(self):
         """
-        Creates a Decision Tree with provided training data and data's attributes depth.
+        Creates a Decision Tree with provided training data and data's attributes with given depth.
 
         :return: none
         """
@@ -67,7 +67,7 @@ class DecisionTree:
         Reads in the data in test file and lets the Decision Tree decide whether the Example is in English or Dutch.
         Prints the classification of each Example(line) into terminal.
 
-        :param test_file: the test file containing the data with 15 words and their features.
+        :param test_file: the test file containing the data with 15 words and their attributes.
         :return: none
         """
         self.test_data = parse(test_file, True)
