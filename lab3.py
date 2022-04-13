@@ -13,12 +13,14 @@ OUTPUT_PATH = PATH + "\\output\\"
 
 def main():
     if len(sys.argv) < 2:
+        print("Error: Incorrect number of arguments", file=sys.stderr)
         usage(True, True)
 
     action_type = sys.argv[1]
 
     if action_type == "train":
         if len(sys.argv) <= 4:
+            print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(True, False)
 
         examples_file = sys.argv[2]
@@ -44,6 +46,7 @@ def main():
 
     elif action_type == "predict":
         if len(sys.argv) <= 3:
+            print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(False, True)
 
         hypothesis_file = sys.argv[2]
