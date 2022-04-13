@@ -74,7 +74,7 @@ class DecisionTree:
 
         for example in self.test_data:
             decision = self.decision_tree.decide(example)
-            print("Result:", decision, "| Line:", example.words.replace("\n", ""))
+            print("Result:", decision, "| Line:", example.line.replace("\n", ""))
 
 
 def create_tree(examples, attributes, parent_examples, depth):
