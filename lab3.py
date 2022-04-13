@@ -6,19 +6,26 @@ from learners.util.utilities import usage
 from learners.DecisionTree import DecisionTree
 from learners.AdaBoost import AdaBoost
 
-PATH = os.path.dirname(os.path.abspath(__file__))
-INPUT_PATH = PATH + "\\input\\"
-OUTPUT_PATH = PATH + "\\output\\"
+PATH = os.path.dirname(os.path.abspath(__file__))   # absolute path to this file
+INPUT_PATH = PATH + "\\input\\"                     # absolute path to input folder
+OUTPUT_PATH = PATH + "\\output\\"                   # absolute path to output folder
 
 
 def main():
+    """
+    Starts the application by reading the given arguments.
+
+    :return: none
+    """
+    # check if there is train/predict argument
     if len(sys.argv) < 2:
         print("Error: Incorrect number of arguments", file=sys.stderr)
         usage(True, True)
 
-    action_type = sys.argv[1]
+    action_type = sys.argv[1]   # train/predict argument
 
     if action_type == "train":
+        # check if all required arguments for training are provided
         if len(sys.argv) <= 4:
             print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(True, False)
@@ -27,6 +34,7 @@ def main():
         output_file = sys.argv[3]
         learning_type = sys.argv[4]
 
+        # check if the example file exists
         if not os.path.isfile(INPUT_PATH + examples_file):
             print("Error: File for Examples was not found!", file=sys.stderr)
             sys.exit()
@@ -45,6 +53,7 @@ def main():
         model.train()
 
     elif action_type == "predict":
+        # check if all required arguments for predicting are provided
         if len(sys.argv) <= 3:
             print("Error: Incorrect number of arguments", file=sys.stderr)
             usage(False, True)
@@ -52,6 +61,7 @@ def main():
         hypothesis_file = sys.argv[2]
         data_file = sys.argv[3]
 
+        # check if hypothesis file exists and check if test file exists
         if not os.path.isfile(OUTPUT_PATH + hypothesis_file):
             print("Error: No Hypothesis File was found!", file=sys.stderr)
             usage(True, False)
@@ -59,9 +69,9 @@ def main():
             print("Error: No Data File was found to test!", file=sys.stderr)
             sys.exit()
 
+        # load the file and use it to predict
         h_file = open(OUTPUT_PATH + hypothesis_file, "rb")
         model = pickle.load(h_file)
-
         h_file.close()
         model.predict(INPUT_PATH + data_file)
 
