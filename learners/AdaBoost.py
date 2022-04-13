@@ -74,6 +74,7 @@ class AdaBoost:
             for example in self.train_data:
                 decision = stump.decide(example)
 
+                # calculate the error for incorrectly classified
                 if decision != example.classification:
                     error += example.weight
 
@@ -82,19 +83,21 @@ class AdaBoost:
             #     break
             # error = max(error, 1 - e)
 
+            # go through every example and update weights
             for j in range(n):
                 example = self.train_data[j]
                 decision = stump.decide(example)
 
+                # if the example was correctly classified, lower the weight of the example
                 if decision == example.classification:
                     # new_weight = example.weight * (error/(1 - error))
-                    new_weight = example.weight * (error/(instance.normalized_sum - error))
+                    new_weight = example.weight * (error / (instance.initial_sum - error))
                     instance.change_weight(j, new_weight)
 
-            instance.normalize()
+            instance.normalize()        # normalize the sum of the Weighted Instance
             # stump.weight = (1/2) * (math.log(1 - error)/error)
-            stump.weight = (1/2) * (math.log(instance.normalized_sum - error)/error)
-            self.ensemble.append(stump)
+            stump.weight = (1/2) * (math.log(instance.initial_sum - error) / error)    # math.log is natural log (ln)
+            self.ensemble.append(stump) # add the stump to ensemble
 
         file = open(self.output_file, "wb")
         pickle.dump(self, file)

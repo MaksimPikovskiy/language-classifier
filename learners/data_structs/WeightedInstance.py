@@ -8,7 +8,7 @@ class WeightedInstance:
         Examples for this Weighted Instance
     sum : int
         the weight of this Weighted Instance
-    normalized_sum : float
+    initial_sum : float
         the normalized weight of this Weighted Instance
 
     Methods
@@ -20,7 +20,7 @@ class WeightedInstance:
     """
     data = None
     sum = 0
-    normalized_sum = 0
+    initial_sum = 0
 
     def __init__(self, examples):
         """
@@ -34,7 +34,7 @@ class WeightedInstance:
             example.weight = 1
             self.sum += example.weight
 
-        self.normalized_sum = self.sum
+        self.initial_sum = self.sum
 
     def normalize(self):
         """
@@ -42,9 +42,8 @@ class WeightedInstance:
 
         :return: none
         """
-        normalization_constant = self.normalized_sum / self.sum
+        normalization_constant = self.initial_sum / self.sum
         self.sum = 0
-
         for example in self.data:
             example.weight *= normalization_constant
             self.sum += example.weight
