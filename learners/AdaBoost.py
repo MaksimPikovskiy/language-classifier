@@ -64,12 +64,12 @@ class AdaBoost:
         self.ensemble = []
         attributes = set(self.train_data[0].attributes.keys())
         n = len(self.train_data)
-        # e = 1 / (2 * n)
+        # e = 1 / (2 * n)   # logic from pseudocode
         instance = WeightedInstance(self.train_data)
 
         for i in range(self.ensemble_size):
             stump = create_tree(self.train_data, attributes, [], 1)
-            error = 0
+            error = 0.0
 
             for example in self.train_data:
                 decision = stump.decide(example)
@@ -78,10 +78,11 @@ class AdaBoost:
                 if decision != example.classification:
                     error += example.weight
 
-            # this logic messes the AdaBoost, resulting in None classification
-            # if error > (1/2):
+            # this logic (from pseudocode) messes the AdaBoost, resulting in None classification
+            # if error > 0.5:
             #     break
-            # error = max(error, 1 - e)
+            # error = min(error, 1 - e)
+            error = 0.0000000000001 if error == 0 else error
 
             # go through every example and update weights
             for j in range(n):
@@ -94,10 +95,10 @@ class AdaBoost:
                     new_weight = example.weight * (error / (instance.initial_sum - error))
                     instance.change_weight(j, new_weight)
 
-            instance.normalize()        # normalize the sum of the Weighted Instance
+            instance.normalize()            # normalize the sum of the Weighted Instance
             # stump.weight = (1/2) * (math.log(1 - error)/error)
             stump.weight = (1/2) * (math.log(instance.initial_sum - error) / error)    # math.log is natural log (ln)
-            self.ensemble.append(stump) # add the stump to ensemble
+            self.ensemble.append(stump)     # add the stump to ensemble
 
         file = open(self.output_file, "wb")
         pickle.dump(self, file)

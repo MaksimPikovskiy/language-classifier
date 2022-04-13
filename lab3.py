@@ -10,6 +10,11 @@ PATH = os.path.dirname(os.path.abspath(__file__))   # absolute path to this file
 INPUT_PATH = PATH + "\\input\\"                     # absolute path to input folder
 OUTPUT_PATH = PATH + "\\output\\"                   # absolute path to output folder
 
+# Set these for desired depth/ensemble_size
+# ~~~~~~~~~~~~~~~~~~~~~
+DEPTH = 7
+ENSEMBLE_SIZE = 5
+# ~~~~~~~~~~~~~~~~~~~~~
 
 def main():
     """
@@ -42,10 +47,10 @@ def main():
         model = None
         if learning_type == "dt":
             print("Training Decision Tree Model...")
-            model = DecisionTree(INPUT_PATH + examples_file, OUTPUT_PATH + output_file, 7)
+            model = DecisionTree(INPUT_PATH + examples_file, OUTPUT_PATH + output_file, DEPTH)
         elif learning_type == "ada":
             print("Training AdaBoost Model...")
-            model = AdaBoost(INPUT_PATH + examples_file, OUTPUT_PATH + output_file, 5)
+            model = AdaBoost(INPUT_PATH + examples_file, OUTPUT_PATH + output_file, ENSEMBLE_SIZE)
         else:
             print("Error: Unknown learning type for Wikipedia Language Classifier Algorithm", file=sys.stderr)
             sys.exit()
