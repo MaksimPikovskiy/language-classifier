@@ -146,10 +146,10 @@ class Example:
 
         ratio = vowel_total / consonant_total
         ratio_range = (0, 0.5)          # first generalized range: 0 => 0.5
-        if 0.51 <= ratio <= 0.70:
-            ratio_range = (0.51, 0.70)  # second generalized range: 0.51 => 0.70
-        elif 0.71 <= ratio:
-            ratio_range = (0.71, None)  # third generalized range: 0.71 => infinite
+        if 0.51 <= ratio <= 0.75:
+            ratio_range = (0.51, 0.75)  # second generalized range: 0.51 => 0.75
+        elif 0.76 <= ratio:
+            ratio_range = (0.76, None)  # third generalized range: 0.76 => infinite
 
         return pair_range(vow_count), pair_range(con_count), ratio_range
 
