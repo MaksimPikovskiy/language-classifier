@@ -50,6 +50,8 @@ class Example:
     def get_attributes(self):
         """
         Finds all of the declared attributes for the example.
+        Attributes were scanned from the main_train.dat (provided by Jake Waclawski),
+        train1.dat, and example_train.dat and example_test.dat
 
         :return: none
         """
@@ -58,10 +60,11 @@ class Example:
 
         return {
             # Dutch sentences attributes
-            "ends-in-en": ends_in("en", words),
-            "ends-in-e": ends_in("e", words),
-            "has-aa": "aa" in self.line,
+            "ends-in-en": ends_in("en", words), # while some English words end in "en", it's predominantly seen in Dutch
+            # "ends-in-e": ends_in("e", words), # poor attribute for English, as both languages seem to contain it
+            "has-aa": "aa" in self.line,    # a lot of Dutch examples seem to have "aa" and "ee" vowel pairs
             "has-ee": "ee" in self.line,
+            "has-word-zijn": "zijn" in words,
             "has-word-en": "en" in words,
             "has-article-de": "de" in words,
             "has-article-het": "het" in words,
@@ -69,23 +72,34 @@ class Example:
             "has-article-der": "der" in words,
             "has-article-des": "des" in words,
             "has-article-den": "den" in words,
+            "has-article-van": "van" in words,  # could mess up for Dutch if English example talks about vehicle "van"
+            "has-word-voor": "voor" in words,
+            "has-word-werd": "werd" in words,
+            "has-word-op": "op" in words,
+            "has-word-uit": "uit" in words,
             # English sentences attributes
             "has-word-she": "she" in words,
             "has-word-he": "he" in words,
             "has-word-they": "they" in words,
             "has-word-it": "it" in words,
+            "has-word-him": "him" in words,
+            "has-word-her": "her" in words,
+            "has-word-them": "him" in words,
             "has-article-the": "the" in words,
             "has-article-a": "a" in words,
             "has-article-an": "an" in words,
             "has-word-and": "and" in words,
             "has-word-or": "or" in words,
-            "has-word-in": "in" in words,
+            # "has-word-in": "in" in words, # poor attribute for English, as both languages seem to contain it
             "has-word-of": "of" in words,
+            "has-word-with": "with" in words,
+            "has-word-within": "within" in words,
+            "has-word-by": "by" in words,
             # Other attributes
             "vow_con_ratio": vow_con_ratio,
-            "avg_word_len": self.avg_word_len(),
-            "vowel-pairs": vow_pairs,
-            "consonant-pairs": con_pairs,
+            "avg_word_len": self.avg_word_len(),    # English examples seem to
+            "vowel-pairs": vow_pairs,   # a lot of Dutch examples seem to have vowel pairs, like "aa" and "ee"
+            "consonant-pairs": con_pairs,   # a lot of English examples seem to have consonant pairs, like "cc" and "tt"
             "letter-pairs": pair_range(sum([self.line[i] == self.line[i - 1] for i in range(1, len(self.line))]))
                             # finds a pair range to find letter pairs, like "oo" or "tt"
 
