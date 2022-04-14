@@ -63,20 +63,53 @@ in `main_train.dat` file. The rest of the examples, 30%, (600 sentences out of 2
 which is contained in `main_test.dat` file.
 
 ### Decision Tree <a name="decision-tree"></a>
-The Decision Tree Training/Testing Model was implemented using the pseudocode from "Artifical Intelligence: A 
+The Decision Tree Training/Testing Model was implemented using the pseudocode from "Artificial Intelligence: A 
 Modern Approach (Fourth Edition)" by Stuart Russell and Peter Norvig. However, there was a slight change in the 
 algorithm, which is adding depth to the algorithm. The parameter depth determines the maximum depth the Decision Tree
 can grow. The Best Decision Tree was trained on `main_train.dat` (1400 examples) and tested on `main_test.dat` 
-(600 examples). By changing the DEPTH value in `lab3.py`, it was found that a minimum depth of 7 is required to
+(600 examples). By changing the `DEPTH` value in `lab3.py`, it was found that a minimum depth of 7 is required to
 nearly perfectly classify the data (only 2/600 examples were wrong, error rate of 0.33%). <br />
+
 With depth 8, the Decision Tree Model only incorrectly classified 2 examples out of 600. <br />
 &emsp;&emsp; Thus, the error rate would be: 1/600 = 0.0017% = 0.17% <br />
 &emsp;&emsp; The accuracy is 99.83%  <br />
 Increasing depth past 8 does not seem to lower the error rate. <br />
 
 ### AdaBoost <a name="adaboost"></a>
+The AdaBoost Training/Testing Model was implemented using the pseudocode from "Artificial Intelligence: A 
+Modern Approach (Fourth Edition)" by Stuart Russell and Peter Norvig. There is no deviation from the pseudocode.
+The learning algorithm chosen was the Decision Tree. The parameter ensemble size determines the maximum ensemble size 
+of the AdaBoost. The Best AdaBoost Model was trained on `main_train.dat` (1400 examples) and tested on `main_test.dat` 
+(600 examples). Each stump in ensemble was a Decision Tree with maximum depth of 1. By changing the `ENSEMBLE_SIZE` 
+valued in `lab3.py`, it was found that a minimum ensemble size of 10 is required to nearly perfectly classify the 
+data (only 8/600 examples were wrong, error rate of 1.33%).
+
+With ensemble size of 10, the AdaBoost Model only incorrectly classified 8 examples out of 600. <br />
+&emsp;&emsp; Thus, the error rate would be: 8/600 = 0.0133 = 1.33% <br /> 
+&emsp;&emsp; The accuracy is 98.67% <br />
+Increasing ensemble size past 10 does not seem to lower the error rate. <br />
+
+Furthermore, it is interesting that Decision Tree was more accurate than the AdaBoost, implementing Decision Tree.
+This could be accounted to a maximum depth of 1 for each stump, which has a higher chance of error.
 
 ### Attributes <a name="attributes"></a>
+To get the attributes to classify the language of Examples, I have observed the original `train.dat` file, which
+was provided by Jake Waclawski. I have noticed the patterns, such as vowel pairs for Dutch language ("aa" and "ee") and 
+consonant pairs for English language ("tt" and "cc"). Furthermore, I noticed the significant use of specific words and 
+articles (like "de", "van", "the", "of", "with", etc). To further prove my observations, I used an online tool to confirm
+my observations. The tool generates the word cloud graph, where larger words appear more than smaller ones. The tool can
+be found here: https://www.freewordcloudgenerator.com/generatewordcloud. Furthermore, some other general 
+features/attributes were used, like average word length (made from observation that Dutch word appear in smaller length
+compared to English words), "vowel pairs to consonant pairs" ratio, and more.
+
+Other additional material was used to determine function words between the Dutch and English languages:
+* English Function Words: https://github.com/Yoast/javascript/blob/develop/packages/yoastseo/src/researches/english/functionWords.js
+* Dutch Function Words: https://github.com/Yoast/javascript/blob/develop/packages/yoastseo/src/researches/dutch/functionWords.js
+
+#### Word Cloud For 2000 Train Data
+![Word Cloud representing the frequency of specific words in 2000 train data file](word cloud.png)
+
+
 
 
 ### Wrong Classifications and Error Rate (AdaBoost) <a name="wrong"></a>
