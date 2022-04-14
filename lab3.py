@@ -12,8 +12,8 @@ OUTPUT_PATH = PATH + "\\output\\"                   # absolute path to output fo
 
 # Set these for desired depth/ensemble_size
 # ~~~~~~~~~~~~~~~~~~~~~
-DEPTH = 7
-ENSEMBLE_SIZE = 5
+DEPTH = 8               # (7) Best depth for correct classification for main_test.dat using main_train.dat
+ENSEMBLE_SIZE = 10      # (10) Best ensemble size for correct classification for main_test.dat using main_train.dat
 # ~~~~~~~~~~~~~~~~~~~~~
 
 
