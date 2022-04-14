@@ -97,7 +97,7 @@ class Example:
             "has-word-by": "by" in words,
             # Other attributes
             "vow_con_ratio": vow_con_ratio,
-            "avg_word_len": self.avg_word_len(),    # English examples seem to
+            "avg_word_len": self.avg_word_len(),    # English examples seem to have larger word lengths
             "vowel-pairs": vow_pairs,   # a lot of Dutch examples seem to have vowel pairs, like "aa" and "ee"
             "consonant-pairs": con_pairs,   # a lot of English examples seem to have consonant pairs, like "cc" and "tt"
             "letter-pairs": pair_range(sum([self.line[i] == self.line[i - 1] for i in range(1, len(self.line))]))
