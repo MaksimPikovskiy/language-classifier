@@ -51,7 +51,7 @@ class Example:
         """
         Finds all of the declared attributes for the example.
         Attributes were scanned from the main_train.dat (provided by Jake Waclawski),
-        train1.dat, and example_train.dat and example_test.dat
+        example_train.dat and example_test.dat
 
         :return: none
         """
