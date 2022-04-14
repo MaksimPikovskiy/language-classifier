@@ -163,9 +163,9 @@ class Example:
         words = self.line.split()
         avg = sum(len(word) for word in words) // len(words)
 
-        range = (0, 5)             # first generalized range: 0 => 5
+        range_avg = (0, 5)             # first generalized range: 0 => 5
         if 6 <= avg <= 10:
-            range = (6, 10)        # second generalized range: 6 => 10
+            range_avg = (6, 10)        # second generalized range: 6 => 10
         elif 11 <= avg:
-            range = (11, None)     # second generalized range: 11 => infinite
-        return range
+            range_avg = (11, None)     # second generalized range: 11 => infinite
+        return range_avg
