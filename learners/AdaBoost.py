@@ -39,7 +39,7 @@ class AdaBoost:
     test_data = []
     output_file = None
     ensemble = []
-    ensemble_size = 7
+    ensemble_size = 0
 
     def __init__(self, examples_file, output_file, ensemble_size):
         """
