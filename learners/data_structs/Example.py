@@ -137,12 +137,12 @@ class Example:
         vowel_total = 0
         consonant_total = 0
         for char in self.line:
-            if char in vowels:
+            if char in vowels:              # vowels check
                 vowel_total += 1
-            elif 97 <= ord(char) <= 122:    # 97 => 122, lowercase vowels and consonants (no symbols)
+            elif 97 <= ord(char) <= 122:    # consonant check; 97 => 122, lowercase vowels and consonants (no symbols)
                 consonant_total += 1
             else:
-                continue
+                continue                    # skip other symbols, like spaces, parentheses, commas, dots, etc.
 
         ratio = vowel_total / consonant_total
         ratio_range = (0, 0.5)          # first generalized range: 0 => 0.5
