@@ -149,7 +149,7 @@ class Example:
         if 0.51 <= ratio <= 0.75:
             ratio_range = (0.51, 0.75)  # second generalized range: 0.51 => 0.75
         elif 0.76 <= ratio:
-            ratio_range = (0.76, None)  # third generalized range: 0.76 => infinite
+            ratio_range = (0.76, 1)     # third generalized range: 0.76 => infinite
 
         return pair_range(vow_count), pair_range(con_count), ratio_range
 
