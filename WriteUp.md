@@ -54,7 +54,8 @@ The best models for ensemble and decision tree are in the `lab3/output`:
 * `tree.oj` which is the best model trained under Decision Tree.
 
 Both models were generated using the `main_train.dat` file. This is the file of either English or Dutch with 
-corresponding labels. It was provided by Jake Waclawski.
+corresponding labels. It was provided by Jake Waclawski. The original train data file contained 1000 English 
+and 1000 Dutch examples.
 
 #### Example Training/Testing Files <a name="example"></a>
 The original training data file, provided by Jake Waclawski, was split using a 70%-30% rule of databases. That is,
@@ -109,8 +110,56 @@ Other additional material was used to determine function words between the Dutch
 #### Word Cloud For 2000 Train Data
 ![Word Cloud representing the frequency of specific words in 2000 train data file](word cloud.png)
 
+There are **37 chosen attributes**, of which there are **16 attributes specifically for Dutch** and **16 attributes specifically 
+for English**. The other **5 are more general observations**. 32 attributes are binary and the other are 3-4 specific ranges 
+for each one.
 
+| Attribute | Description | Explanation |
+| --------- | ----------- | ----------- |
+| **Dutch Attributes** |
+| ends-in-en | (Binary) True if there is any word than ends in en | a lot of Dutch words end in "end" |
+| has-aa | (Binary) True if there is "aa" vowel pair | a lot of Dutch words seem to have the "aa" vowel pair |
+| has-ee | (Binary) True if there is "ee" vowel pair | a lot of Dutch words seem to have the "ee" vowel pair |
+| has-word-zijn | (Binary) True if there is a word "zijn" | there was a relatively heavy presence of "zijn" in 2000 examples |
+| has-word-en | (Binary) True if there is a word "en" | there was a high presence of "en" in the 2000 examples, seen in word cloud above |
+| has-article-de | (Binary) True if there is an article "de" | there was a high presence of "de" in 2000 examples and it is an Dutch article |
+| has-article-het | (Binary) True if there is an article "het" | there was a high presence of "het" in 2000 examples and it is an Dutch article |
+| has-article-een | (Binary) True if there is an article "een" | there was a somewhat high presence of "een" in 2000 examples and it is an Dutch article |
+| has-article-der | (Binary) True if there is an article "der" | "der" is a common Dutch article, which could definitely be written in any online article |
+| has-article-des | (Binary) True if there is an article "des" | "des" is a common Dutch article, which could definitely be written in any online article | 
+| has-article-den | (Binary) True if there is an article "den" | "den" is a common Dutch article, which could definitely be written in any online article | 
+| has-word-van | (Binary) True if there is an article "van" | "van" is a common Dutch preposition and has a high presence in 200) examples | 
+| has-word-voor | (Binary) True if there is a word "voor" | there is a decent presence of "voor" in 2000 examples |
+| has-word-werd | (Binary) True if there is a word "werd" | there is a decent presence of "werd" in 2000 examples |
+| has-word-op | (Binary) True if there is a word "op" | there is a decent presence of "op" in 2000 examples |
+| has-word-uit | (Binary) True if there is a word "uit" | there is a decent presence of "uit" in 2000 examples |
+| **English Attributes** |
+| has-word-she | (Binary) True if there is a word "she" | "she" is a common pronoun used in English writing |
+| has-word-he | (Binary) True if there is a word "he" | "he" is a common pronoun used in English writing |
+| has-word-they | (Binary) True if there is a word "they" | "they" is a common pronoun used in English writing |
+| has-word-it | (Binary) True if there is a word "it" | "it" is a common pronoun used in English writing |
+| has-word-him | (Binary) True if there is a word "him" | "him" is a common pronoun used in English writing |
+| has-word-her | (Binary) True if there is a word "her" | "her" is a common pronoun used in English writing |
+| has-word-them | (Binary) True if there is a word "them" | "them" is a common pronoun used in English writing |
+| has-article-the | (Binary) True if there is an article "the" | article "the" is heavily used in English writing |
+| has-article-a | (Binary) True if there is an article "a" | article "a" is heavily used in English writing |
+| has-article-an | (Binary) True if there is an article "an" | article "an" is heavily used in English writing |
+| has-word-and | (Binary) True if there is a word "and" | "and" is a common conjunction in English writing |
+| has-word-or | (Binary) True if there is a word "or" | "or" is a common conjunction in English writing |
+| has-word-of | (Binary) True if there is a word "of" | "of" is a common preposition in English writing |
+| has-word-with | (Binary) True if there is a word "with" | "with" is a common preposition in English writing |
+| has-word-within | (Binary) True if there is a word "within" | "within" is a relatively common preposition in English writing |
+| has-word-by | (Binary) True if there is a word "by" | "by" is a common preposition in English writing |
+| **General Attributes** | 
+| vow_con_ratio | (Range) range for "vowel pairs to consonant pairs" ratio | Dutch language seems to exhibit more vowel pairs compared to English language|
+| avg_word_len | (Range) range for average word length in the example | Dutch language seems to have words in smaller length compared to English language |
+| vowel-pairs | (Range) range for vowel pairs in the example | Dutch language seems to exhibit more vowel pairs |
+| consonant-pairs | (Range) range for consonant pairs in the example | English language seems to exhibit more consonant pairs |
+| letter-pairs | (Range) range for the count of letter pairs (vowel and consonant) | Dutch language has significantly more letter pairs than English language |
 
+Two attributes were removed from evaluations as both languages seemed to use the attributes in same amount:
+* `ends-in-e` because a lot of both, Dutch and English, words end in "e" 
+* `has-word-in` because both, Dutch and English, languages use this preposition
 
 ### Wrong Classifications and Error Rate (AdaBoost) <a name="wrong"></a>
 

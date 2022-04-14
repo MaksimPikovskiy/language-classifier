@@ -72,7 +72,7 @@ class Example:
             "has-article-der": "der" in words,
             "has-article-des": "des" in words,
             "has-article-den": "den" in words,
-            "has-article-van": "van" in words,  # could mess up for Dutch if English example talks about vehicle "van"
+            "has-word-van": "van" in words,  # could mess up for Dutch if English example talks about vehicle "van"
             "has-word-voor": "voor" in words,
             "has-word-werd": "werd" in words,
             "has-word-op": "op" in words,
