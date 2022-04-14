@@ -108,7 +108,7 @@ Other additional material was used to determine function words between the Dutch
 * Dutch Function Words: https://github.com/Yoast/javascript/blob/develop/packages/yoastseo/src/researches/dutch/functionWords.js
 
 #### Word Cloud For 2000 Train Data
-![Word Cloud representing the frequency of specific words in 2000 train data file](word cloud.png)
+![Word Cloud representing the frequency of specific words in 2000 train data file](other/word cloud.png)
 
 There are **37 chosen attributes**, of which there are **16 attributes specifically for Dutch** and **16 attributes specifically 
 for English**. The other **5 are more general observations**. 32 attributes are binary and the other are 3-4 specific ranges 
