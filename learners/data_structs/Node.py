@@ -38,15 +38,15 @@ class Node:
         self.children = {}
         self.weight = None
 
-    def add_child(self, label, node):
+    def add_child(self, branch, node):
         """
-        Adds a child to this Node under branch label.
+        Adds a child to this Node under branch.
 
-        :param label: the label for the branch
+        :param branch: the branch
         :param node: the child node
         :return: none
         """
-        self.children[label] = node
+        self.children[branch] = node
 
     def decide(self, example):
         """

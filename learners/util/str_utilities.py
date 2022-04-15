@@ -26,7 +26,7 @@ def pair_range(pair_count):
     if 5 <= pair_count <= 8:
         range_pair = (5, 8)            # second generalized range: 5 => 8
     elif 9 <= pair_count <= 11:
-        range_pair = (9, 11)           # third generalized range: 9 => 111
+        range_pair = (9, 11)           # third generalized range: 9 => 11
     elif 11 < pair_count:
         range_pair = (12, None)        # fourth generalized range: 12 => infinite
     return range_pair
