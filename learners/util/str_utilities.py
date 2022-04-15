@@ -22,11 +22,11 @@ def pair_range(pair_count):
     :param pair_count: a count of pairs
     :return: the range that the pair count falls into
     """
-    range_pair = (0, 4)                # first generalized range: 0 => 3
+    range_pair = (0, 4)                # first generalized range: 0 => 4
     if 5 <= pair_count <= 8:
-        range_pair = (5, 8)            # second generalized range: 4 => 7
+        range_pair = (5, 8)            # second generalized range: 5 => 8
     elif 9 <= pair_count <= 11:
-        range_pair = (9, 11)           # third generalized range: 8 => 10
+        range_pair = (9, 11)           # third generalized range: 9 => 111
     elif 11 < pair_count:
-        range_pair = (12, None)        # fourth generalized range: 11 => infinite
+        range_pair = (12, None)        # fourth generalized range: 12 => infinite
     return range_pair
